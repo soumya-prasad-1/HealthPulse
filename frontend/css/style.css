@@ -1,6 +1,12 @@
 /* =========================================================
-   DRMUDHIWALLA HEALTHTECH
+   HEALTHPULSE
+   SMART HEALTH MONITORING & PREDICTION
    PREMIUM COMMON STYLE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
    ========================================================= */
 
 * {
@@ -14,7 +20,7 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
     background: #ffffff;
     color: #102a43;
     line-height: 1.6;
@@ -30,6 +36,12 @@ button {
     font-family: inherit;
 }
 
+.container {
+    width: 90%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
 
 /* =========================================================
    NAVBAR
@@ -39,26 +51,29 @@ button {
     position: sticky;
     top: 0;
     z-index: 1000;
+
     width: 100%;
-    background: rgba(255, 255, 255, 0.88);
+
+    background: rgba(255, 255, 255, 0.94);
+
     border-bottom: 1px solid rgba(220, 233, 243, 0.8);
+
     backdrop-filter: blur(18px);
+
     transition:
-        box-shadow 0.3s ease,
-        background 0.3s ease;
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.98);
+
     box-shadow:
         0 10px 35px rgba(20, 70, 110, 0.08);
 }
 
 .nav-container {
-    width: 90%;
-    max-width: 1250px;
     min-height: 76px;
-    margin: auto;
 
     display: flex;
     align-items: center;
@@ -69,73 +84,90 @@ button {
 
 
 /* =========================================================
-   LOGO
+   HEALTHPULSE LOGO
+   EXACT HOME PAGE STRUCTURE
    ========================================================= */
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+
+    gap: 11px;
+
     flex-shrink: 0;
+
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-1px);
 }
 
 .brand-mark {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 13px;
+    flex-shrink: 0;
 
-    background:
-        linear-gradient(
-            135deg,
-            #0877dc,
-            #0b5db5
-        );
+    background: #0b66c3;
+    color: #ffffff;
 
-    color: white;
+    border-radius: 11px;
 
-    font-size: 22px;
+    font-family: "Manrope", sans-serif;
+    font-size: 20px;
     font-weight: 800;
 
     box-shadow:
-        0 9px 25px rgba(11, 102, 195, 0.25);
+        0 7px 18px rgba(11, 102, 195, 0.20);
 
     transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .logo:hover .brand-mark {
-    transform: rotate(-7deg) scale(1.08);
+    transform: scale(1.05);
 
     box-shadow:
-        0 14px 32px rgba(11, 102, 195, 0.35);
+        0 10px 24px rgba(11, 102, 195, 0.25);
 }
 
 .brand-text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
 
-    color: #102a43;
+.brand-text strong {
+    display: block;
 
-    font-size: 17px;
+    color: #0b66c3;
+
+    font-family: "Manrope", sans-serif;
+    font-size: 21px;
     font-weight: 800;
 
     line-height: 1.1;
+    letter-spacing: -0.4px;
 }
 
 .brand-text small {
+    display: block;
+
     margin-top: 4px;
 
     color: #75889a;
 
     font-size: 8px;
+    font-weight: 700;
 
     letter-spacing: 1.2px;
+    line-height: 1;
 }
 
 
@@ -146,10 +178,11 @@ button {
 .nav-menu {
     display: flex;
     align-items: center;
+
     gap: 27px;
 }
 
-.nav-menu > a {
+.nav-menu a {
     position: relative;
 
     color: #465d72;
@@ -162,7 +195,7 @@ button {
         transform 0.3s ease;
 }
 
-.nav-menu > a::after {
+.nav-menu a::after {
     content: "";
 
     position: absolute;
@@ -182,410 +215,25 @@ button {
     transition: width 0.3s ease;
 }
 
-.nav-menu > a:hover {
+.nav-menu a:hover {
     color: #0b66c3;
 }
 
-.nav-menu > a:hover::after {
+.nav-menu a:hover::after {
     width: 100%;
 }
 
-.nav-menu > a.active {
+.nav-menu a.active {
     color: #0b66c3;
 }
 
-.nav-menu > a.active::after {
+.nav-menu a.active::after {
     width: 100%;
 }
 
 
 /* =========================================================
-   PRODUCT / INDUSTRIES DROPDOWN BUTTON
-   ========================================================= */
-
-.nav-dropdown {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-}
-
-.nav-dropdown-btn {
-    position: relative;
-
-    padding: 8px 0;
-
-    border: none;
-
-    background: transparent;
-
-    color: #465d72;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: color 0.3s ease;
-}
-
-.nav-dropdown-btn:hover {
-    color: #0b66c3;
-}
-
-.dropdown-arrow {
-    display: inline-block;
-
-    margin-left: 5px;
-
-    color: #718496;
-
-    font-size: 15px;
-
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease;
-}
-
-.nav-dropdown:hover .dropdown-arrow {
-    color: #0b66c3;
-
-    transform: rotate(180deg);
-}
-
-
-/* =========================================================
-   DROPDOWN MENU
-   ========================================================= */
-
-.dropdown-menu {
-    position: absolute;
-
-    top: calc(100% + 18px);
-
-    left: 50%;
-
-    width: 650px;
-
-    padding: 12px;
-
-    display: grid;
-
-    grid-template-columns: 1.25fr 0.75fr;
-
-    gap: 10px;
-
-    background: rgba(255, 255, 255, 0.98);
-
-    border: 1px solid #dce9f3;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 25px 65px rgba(18, 68, 105, 0.16);
-
-    backdrop-filter: blur(18px);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform:
-        translate(-50%, -10px)
-        scale(0.98);
-
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease,
-        visibility 0.25s ease;
-}
-
-
-/* little arrow above dropdown */
-
-.dropdown-menu::before {
-    content: "";
-
-    position: absolute;
-
-    top: -7px;
-    left: 50%;
-
-    width: 13px;
-    height: 13px;
-
-    background: white;
-
-    border-left: 1px solid #dce9f3;
-    border-top: 1px solid #dce9f3;
-
-    transform:
-        translateX(-50%)
-        rotate(45deg);
-}
-
-
-/* show dropdown */
-
-.nav-dropdown:hover .dropdown-menu {
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform:
-        translate(-50%, 0)
-        scale(1);
-}
-
-
-/* =========================================================
-   DROPDOWN LINKS
-   ========================================================= */
-
-.dropdown-links {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-}
-
-.dropdown-item {
-    position: relative;
-
-    display: grid;
-
-    grid-template-columns: 38px 1fr 20px;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 15px 14px;
-
-    border-radius: 13px;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-}
-
-.dropdown-item:hover {
-    background: #f1f8ff;
-
-    transform: translateX(4px);
-}
-
-.dropdown-icon {
-    width: 34px;
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    background: #eaf5ff;
-
-    color: #0b66c3;
-
-    font-size: 10px;
-
-    font-weight: 800;
-}
-
-.dropdown-item > span:nth-child(2) {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 3px;
-}
-
-.dropdown-item strong {
-    color: #173b59;
-
-    font-size: 13px;
-
-    font-weight: 800;
-}
-
-.dropdown-item small {
-    color: #8192a2;
-
-    font-size: 11px;
-
-    line-height: 1.4;
-}
-
-.item-arrow {
-    color: #9aabba;
-
-    font-size: 16px;
-
-    transition:
-        transform 0.25s ease,
-        color 0.25s ease;
-}
-
-.dropdown-item:hover .item-arrow {
-    color: #0b66c3;
-
-    transform: translateX(4px);
-}
-
-
-/* =========================================================
-   DROPDOWN FEATURE PANEL
-   ========================================================= */
-
-.dropdown-feature {
-    position: relative;
-
-    padding: 27px 23px;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(88, 190, 255, 0.25),
-            transparent 35%
-        ),
-        linear-gradient(
-            145deg,
-            #075cae,
-            #0b76d1
-        );
-
-    color: white;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-}
-
-.dropdown-feature::after {
-    content: "";
-
-    position: absolute;
-
-    width: 130px;
-    height: 130px;
-
-    right: -60px;
-    bottom: -60px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.dropdown-feature-label {
-    position: relative;
-    z-index: 2;
-
-    color: #ccecff;
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.4px;
-}
-
-.dropdown-feature h3 {
-    position: relative;
-    z-index: 2;
-
-    margin: 12px 0;
-
-    color: white;
-
-    font-size: 22px;
-
-    line-height: 1.2;
-}
-
-.dropdown-feature p {
-    position: relative;
-    z-index: 2;
-
-    margin-bottom: 20px;
-
-    color: #e1f3ff;
-
-    font-size: 11px;
-
-    line-height: 1.6;
-}
-
-.dropdown-feature a {
-    position: relative;
-    z-index: 2;
-
-    color: white;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    transition:
-        transform 0.25s ease;
-}
-
-.dropdown-feature a:hover {
-    transform: translateX(5px);
-}
-
-
-/* =========================================================
-   NAV CTA
-   ========================================================= */
-
-.nav-cta {
-    padding: 11px 19px;
-
-    border-radius: 11px;
-
-    background: #0b66c3;
-
-    color: white !important;
-
-    box-shadow:
-        0 8px 20px rgba(11, 102, 195, 0.18);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease !important;
-}
-
-.nav-cta::after {
-    display: none !important;
-}
-
-.nav-cta:hover {
-    background: #084f98;
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 15px 30px rgba(11, 102, 195, 0.28);
-}
-
-
-/* =========================================================
-   MOBILE MENU
+   MOBILE MENU BUTTON
    ========================================================= */
 
 .menu-toggle {
@@ -594,19 +242,22 @@ button {
     width: 43px;
     height: 43px;
 
-    border: none;
+    align-items: center;
+    justify-content: center;
 
+    border: none;
     border-radius: 12px;
 
     background: #eef7ff;
-
     color: #0b66c3;
 
     font-size: 21px;
 
     cursor: pointer;
 
-    transition: all 0.3s ease;
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
 }
 
 .menu-toggle:hover {
@@ -614,6 +265,11 @@ button {
 
     transform: scale(1.05);
 }
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
 
 .mobile-menu {
     display: none;
@@ -631,7 +287,7 @@ button {
 
     padding: 18px;
 
-    background: white;
+    background: #ffffff;
 
     border-bottom: 1px solid #e1edf5;
 
@@ -651,7 +307,7 @@ button {
     animation: mobileOpen 0.35s ease;
 }
 
-.mobile-menu > a {
+.mobile-menu a {
     padding: 14px 16px;
 
     border-radius: 10px;
@@ -666,12 +322,18 @@ button {
         padding-left 0.25s ease;
 }
 
-.mobile-menu > a:hover {
+.mobile-menu a:hover {
     background: #edf7ff;
 
     color: #0b66c3;
 
     padding-left: 23px;
+}
+
+.mobile-menu a.active {
+    background: #edf7ff;
+
+    color: #0b66c3;
 }
 
 @keyframes mobileOpen {
@@ -685,102 +347,6 @@ button {
         opacity: 1;
         transform: translateY(0);
     }
-
-}
-
-
-/* =========================================================
-   MOBILE DROPDOWN
-   ========================================================= */
-
-.mobile-dropdown {
-    width: 100%;
-}
-
-.mobile-dropdown-btn {
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 14px 16px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: transparent;
-
-    color: #29465f;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease;
-}
-
-.mobile-dropdown-btn:hover {
-    background: #edf7ff;
-
-    color: #0b66c3;
-}
-
-.mobile-dropdown-btn span {
-    font-size: 20px;
-
-    color: #0b66c3;
-
-    transition:
-        transform 0.3s ease;
-}
-
-.mobile-dropdown.open
-.mobile-dropdown-btn span {
-    transform: rotate(45deg);
-}
-
-.mobile-dropdown-content {
-    display: none;
-
-    padding: 4px 10px 8px 28px;
-}
-
-.mobile-dropdown.open
-.mobile-dropdown-content {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 2px;
-}
-
-.mobile-dropdown-content a {
-    padding: 11px 13px;
-
-    color: #617587;
-
-    font-size: 14px;
-
-    border-radius: 8px;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease;
-}
-
-.mobile-dropdown-content a:hover {
-    background: #f1f8ff;
-
-    color: #0b66c3;
 }
 
 
@@ -855,12 +421,8 @@ button {
 
 .hero-grid {
     position: relative;
+
     z-index: 2;
-
-    width: 90%;
-    max-width: 1250px;
-
-    margin: auto;
 
     display: grid;
 
@@ -871,12 +433,18 @@ button {
     align-items: center;
 }
 
+.hero-content {
+    max-width: 650px;
+}
+
 .hero h1 {
     max-width: 700px;
 
     margin: 17px 0 24px;
 
     color: #102a43;
+
+    font-family: "Manrope", sans-serif;
 
     font-size: clamp(44px, 5.3vw, 72px);
 
@@ -920,7 +488,6 @@ button {
     color: #0b66c3;
 
     font-size: 11px;
-
     font-weight: 800;
 
     letter-spacing: 1.8px;
@@ -960,7 +527,6 @@ button {
     border-radius: 11px;
 
     font-size: 14px;
-
     font-weight: 700;
 
     overflow: hidden;
@@ -975,7 +541,7 @@ button {
 .btn-primary {
     background: #0b66c3;
 
-    color: white;
+    color: #ffffff;
 
     box-shadow:
         0 10px 25px rgba(11, 102, 195, 0.20);
@@ -996,12 +562,11 @@ button {
         linear-gradient(
             100deg,
             transparent,
-            rgba(255,255,255,0.28),
+            rgba(255, 255, 255, 0.28),
             transparent
         );
 
-    transition:
-        left 0.5s ease;
+    transition: left 0.5s ease;
 }
 
 .btn-primary:hover::before {
@@ -1018,7 +583,7 @@ button {
 }
 
 .btn-secondary {
-    background: white;
+    background: #ffffff;
 
     color: #0b66c3;
 
@@ -1037,7 +602,7 @@ button {
 }
 
 .btn-white {
-    background: white;
+    background: #ffffff;
 
     color: #0b66c3;
 }
@@ -1046,7 +611,7 @@ button {
     transform: translateY(-4px);
 
     box-shadow:
-        0 14px 28px rgba(0,0,0,0.13);
+        0 14px 28px rgba(0, 0, 0, 0.13);
 }
 
 
@@ -1059,7 +624,7 @@ button {
 
     padding: 27px;
 
-    background: rgba(255,255,255,0.94);
+    background: rgba(255, 255, 255, 0.94);
 
     border: 1px solid #dce9f3;
 
@@ -1069,6 +634,8 @@ button {
         0 25px 65px rgba(22, 76, 120, 0.12);
 
     backdrop-filter: blur(12px);
+
+    overflow: visible;
 
     transition:
         transform 0.45s ease,
@@ -1134,14 +701,19 @@ button {
 
     from {
         opacity: 0;
-        transform: translateY(35px) scale(0.97);
+
+        transform:
+            translateY(35px)
+            scale(0.97);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 @keyframes dashboardFloat {
@@ -1152,9 +724,8 @@ button {
     }
 
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-7px);
     }
-
 }
 
 
@@ -1163,10 +734,14 @@ button {
    ========================================================= */
 
 .dash-top {
+    position: relative;
+
     display: flex;
 
     align-items: center;
     justify-content: space-between;
+
+    gap: 20px;
 
     padding-bottom: 18px;
 
@@ -1175,14 +750,92 @@ button {
     color: #29445d;
 
     font-size: 14px;
-
     font-weight: 700;
+
+    overflow: hidden;
+}
+
+.dash-top > div:first-child {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.dash-top > div:first-child span {
+    color: #8a9aaa;
+
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.dash-top::after {
+    content: "";
+
+    position: absolute;
+
+    left: -35%;
+    top: 0;
+
+    width: 35%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(11, 102, 195, 0.20),
+            rgba(11, 102, 195, 0.75),
+            transparent
+        );
+
+    animation:
+        scanning 3.5s ease-in-out infinite;
+}
+
+@keyframes scanning {
+
+    0% {
+        left: -35%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 .status {
     color: #16855b !important;
 
     font-size: 12px;
+
+    white-space: nowrap;
+
+    animation:
+        activePulse 2s ease-in-out infinite;
+}
+
+@keyframes activePulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.55;
+    }
 }
 
 .dash-customer {
@@ -1255,6 +908,8 @@ button {
     grid-template-columns: repeat(2, 1fr);
 
     gap: 12px;
+
+    margin-top: 18px;
 }
 
 .metric {
@@ -1293,7 +948,7 @@ button {
 }
 
 .metric:hover {
-    background: white;
+    background: #ffffff;
 
     transform:
         translateY(-5px)
@@ -1303,7 +958,7 @@ button {
         0 12px 28px rgba(20, 75, 120, 0.10);
 }
 
-.metric small {
+.metric-label {
     display: block;
 
     margin-bottom: 7px;
@@ -1321,12 +976,33 @@ button {
     color: #0b66c3;
 
     font-size: 22px;
+
+    line-height: 1.2;
+
+    animation:
+        valueBreath 3s ease-in-out infinite;
 }
 
-.metric span {
+.metric small {
+    display: block;
+
+    margin-top: 5px;
+
     color: #8999a8;
 
     font-size: 10px;
+}
+
+@keyframes valueBreath {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.025);
+    }
 }
 
 
@@ -1360,11 +1036,17 @@ button {
 
     color: #102a43;
 
+    font-family: "Manrope", sans-serif;
+
     font-size: clamp(33px, 4vw, 50px);
 
     line-height: 1.12;
 
     letter-spacing: -1.5px;
+}
+
+.section-title span {
+    color: #0b66c3;
 }
 
 .section-copy {
@@ -1375,17 +1057,16 @@ button {
     line-height: 1.78;
 }
 
+.section-heading .section-copy {
+    margin-top: 15px;
+}
+
 
 /* =========================================================
-   SPLIT
+   SPLIT SECTION
    ========================================================= */
 
 .split {
-    width: 90%;
-    max-width: 1250px;
-
-    margin: auto;
-
     display: grid;
 
     grid-template-columns: 1fr 1fr;
@@ -1397,6 +1078,10 @@ button {
 
 .split > div > .section-copy + .section-copy {
     margin-top: 15px;
+}
+
+.split .btn-primary {
+    margin-top: 28px;
 }
 
 
@@ -1424,7 +1109,7 @@ button {
 
     padding: 31px;
 
-    background: white;
+    background: #ffffff;
 
     border: 1px solid #e0ebf3;
 
@@ -1524,7 +1209,7 @@ button {
         linear-gradient(
             145deg,
             #ffffff 0%,
-            #f8f4ff 100%
+            #f2f8ff 100%
         );
 }
 
@@ -1533,23 +1218,50 @@ button {
         linear-gradient(
             145deg,
             #ffffff 0%,
-            #fff9ed 100%
+            #f4faff 100%
         );
+}
+
+.card-number {
+    position: relative;
+
+    z-index: 2;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    background: #eaf5ff;
+
+    color: #0b66c3;
+
+    font-size: 11px;
+    font-weight: 800;
 }
 
 .card h3 {
     position: relative;
+
     z-index: 2;
 
     margin: 14px 0 10px;
 
     color: #173b59;
 
+    font-family: "Manrope", sans-serif;
+
     font-size: 20px;
 }
 
 .card p {
     position: relative;
+
     z-index: 2;
 
     color: #6a7e90;
@@ -1565,6 +1277,7 @@ button {
 
 .card a {
     position: relative;
+
     z-index: 2;
 
     display: inline-flex;
@@ -1576,7 +1289,6 @@ button {
     color: #0b66c3;
 
     font-size: 13px;
-
     font-weight: 800;
 
     transition:
@@ -1613,7 +1325,7 @@ button {
 
     padding: 31px;
 
-    background: white;
+    background: #ffffff;
 
     border: 1px solid #e0eaf2;
 
@@ -1672,7 +1384,6 @@ button {
     border-radius: 50%;
 
     font-size: 12px;
-
     font-weight: 800;
 
     transition:
@@ -1693,6 +1404,8 @@ button {
 
     color: #173b59;
 
+    font-family: "Manrope", sans-serif;
+
     font-size: 19px;
 }
 
@@ -1708,7 +1421,7 @@ button {
    ========================================================= */
 
 .cta {
-    padding: 95px 5%;
+    width: 100%;
 }
 
 .cta-box {
@@ -1731,7 +1444,7 @@ button {
         ),
         radial-gradient(
             circle at 10% 90%,
-            rgba(255,255,255,0.08),
+            rgba(255, 255, 255, 0.08),
             transparent 25%
         ),
         linear-gradient(
@@ -1742,7 +1455,7 @@ button {
 
     border-radius: 30px;
 
-    color: white;
+    color: #ffffff;
 
     overflow: hidden;
 
@@ -1761,7 +1474,7 @@ button {
     right: -150px;
     bottom: -180px;
 
-    border: 1px solid rgba(255,255,255,0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 
     border-radius: 50%;
 }
@@ -1776,6 +1489,8 @@ button {
     max-width: 750px;
 
     margin: 15px auto;
+
+    font-family: "Manrope", sans-serif;
 
     font-size: clamp(33px, 4vw, 50px);
 
@@ -1802,18 +1517,13 @@ button {
 
     background: #082b49;
 
-    color: white;
+    color: #ffffff;
 }
 
 .footer-grid {
-    width: 90%;
-    max-width: 1250px;
-
-    margin: auto;
-
     display: grid;
 
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
 
     gap: 50px;
 }
@@ -1822,22 +1532,23 @@ button {
     display: flex;
 
     flex-direction: column;
-
-    color: white;
-
-    font-size: 20px;
-
-    font-weight: 800;
 }
 
-.footer-logo small {
-    margin-top: 4px;
+.footer-logo .logo {
+    width: fit-content;
+}
 
+.footer-logo .brand-mark {
+    background: #ffffff;
+    color: #0b66c3;
+}
+
+.footer-logo .brand-text strong {
+    color: #ffffff;
+}
+
+.footer-logo .brand-text small {
     color: #94b3ca;
-
-    font-size: 8px;
-
-    letter-spacing: 1.2px;
 }
 
 .footer-grid > div > p {
@@ -1863,7 +1574,7 @@ button {
 .footer-col h4 {
     margin-bottom: 7px;
 
-    color: white;
+    color: #ffffff;
 
     font-size: 14px;
 }
@@ -1879,20 +1590,17 @@ button {
 }
 
 .footer-col a:hover {
-    color: white;
+    color: #ffffff;
 
     transform: translateX(5px);
 }
 
 .footer-bottom {
-    width: 90%;
-    max-width: 1250px;
-
-    margin: 55px auto 0;
+    margin-top: 55px;
 
     padding-top: 22px;
 
-    border-top: 1px solid rgba(255,255,255,0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
 
     display: flex;
 
@@ -1905,19 +1613,16 @@ button {
     font-size: 11px;
 }
 
-.footer-bottom div {
-    display: flex;
-
-    gap: 20px;
+.footer-bottom p {
+    margin: 0;
 }
 
 .footer-bottom a {
-    transition:
-        color 0.25s ease;
+    transition: color 0.25s ease;
 }
 
 .footer-bottom a:hover {
-    color: white;
+    color: #ffffff;
 }
 
 
@@ -1980,7 +1685,7 @@ button {
 
 
 /* =========================================================
-   KEYFRAME EFFECTS
+   GENERAL ANIMATIONS
    ========================================================= */
 
 @keyframes softFloat {
@@ -1993,7 +1698,6 @@ button {
     50% {
         transform: translateY(-20px);
     }
-
 }
 
 @keyframes slowRotate {
@@ -2005,26 +1709,12 @@ button {
     to {
         transform: rotate(360deg);
     }
-
 }
 
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-
-@media (max-width: 1100px) {
-
-    .nav-menu {
-        gap: 18px;
-    }
-
-    .dropdown-menu {
-        width: 590px;
-    }
-
-}
-
 
 @media (max-width: 1000px) {
 
@@ -2034,9 +1724,6 @@ button {
 
     .menu-toggle {
         display: flex;
-
-        align-items: center;
-        justify-content: center;
     }
 
     .hero-grid {
@@ -2062,24 +1749,97 @@ button {
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .nav-dropdown {
-        display: none;
-    }
-
 }
 
 
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .nav-container {
+        min-height: 72px;
+    }
+
+    .brand-mark {
+        width: 36px;
+        height: 36px;
+
+        font-size: 19px;
+    }
+
+    .brand-text strong {
+        font-size: 19px;
+    }
+
+    .brand-text small {
+        font-size: 7px;
+    }
+
+    .hero {
+        min-height: auto;
+
+        padding: 85px 5% 75px;
+    }
+
+    .hero-grid {
+        width: 100%;
+    }
+
+    .section {
+        padding: 85px 5%;
+    }
+
+    .cards,
+    .steps {
+        width: 100%;
+    }
+
+    .footer-grid {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 650px) {
+
+    .container {
+        width: 90%;
+    }
 
     .nav-container {
         min-height: 68px;
     }
 
+    .brand-mark {
+        width: 35px;
+        height: 35px;
+
+        border-radius: 10px;
+
+        font-size: 18px;
+    }
+
+    .brand-text strong {
+        font-size: 18px;
+    }
+
+    .brand-text small {
+        font-size: 6.8px;
+
+        letter-spacing: 1px;
+    }
+
     .mobile-menu {
         top: 68px;
 
-        max-height: calc(100vh - 68px);
+        max-height:
+            calc(100vh - 68px);
     }
 
     .hero {
@@ -2121,6 +1881,10 @@ button {
         width: 100%;
     }
 
+    .section-title {
+        font-size: 34px;
+    }
+
     .cards {
         grid-template-columns: 1fr;
     }
@@ -2137,10 +1901,6 @@ button {
         padding: 21px;
 
         border-radius: 19px;
-    }
-
-    .cta {
-        padding: 65px 5%;
     }
 
     .cta-box {
@@ -2170,27 +1930,34 @@ button {
 
         margin-top: 40px;
     }
-
-    .footer-bottom div {
-        flex-wrap: wrap;
-    }
-
-    .dropdown-menu {
-        display: none;
-    }
-
 }
 
 
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
 @media (max-width: 420px) {
 
-    .brand-text {
-        font-size: 15px;
+    .logo {
+        gap: 8px;
     }
 
     .brand-mark {
-        width: 37px;
-        height: 37px;
+        width: 33px;
+        height: 33px;
+
+        font-size: 17px;
+    }
+
+    .brand-text strong {
+        font-size: 17px;
+    }
+
+    .brand-text small {
+        font-size: 6px;
+
+        letter-spacing: 0.8px;
     }
 
     .hero h1 {
@@ -2205,10 +1972,15 @@ button {
         flex-direction: column;
     }
 
+    .dash-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr;
     }
-
 }
 
 
@@ -2227,193 +1999,4 @@ button {
 
         scroll-behavior: auto !important;
     }
-
-}
-/* =========================================
-   LIVE HEALTH DASHBOARD ANIMATION
-========================================= */
-
-.dashboard {
-    position: relative;
-    overflow: visible;
-}
-
-/* Dashboard floating effect */
-.dashboard {
-    animation: dashboardFloat 5s ease-in-out infinite;
-}
-
-@keyframes dashboardFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-6px);
-    }
-}
-
-
-/* Active status pulse */
-.dashboard .status {
-    animation: activePulse 2s ease-in-out infinite;
-}
-
-@keyframes activePulse {
-    0%, 100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-}
-
-
-/* Metric cards appear slightly one after another */
-.dashboard .metric {
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.dashboard .metric:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(69, 82, 210, 0.12);
-}
-
-
-/* Subtle scanning effect */
-.dashboard .dash-top {
-    position: relative;
-    overflow: hidden;
-}
-
-.dashboard .dash-top::after {
-    content: "";
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 35%;
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(55, 82, 220, 0.15),
-        rgba(55, 82, 220, 0.8),
-        transparent
-    );
-
-    animation: scanning 3.5s ease-in-out infinite;
-}
-
-@keyframes scanning {
-    0% {
-        left: -35%;
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    80% {
-        opacity: 1;
-    }
-
-    100% {
-        left: 100%;
-        opacity: 0;
-    }
-}
-
-
-/* Small breathing effect for metric values */
-.dashboard .metric strong {
-    display: inline-block;
-    animation: valueBreath 3s ease-in-out infinite;
-}
-
-@keyframes valueBreath {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.025);
-    }
-}
-
-
-/* Different timing for each card */
-.dashboard .metric:nth-child(1) {
-    animation: cardReveal 0.7s ease both;
-}
-
-.dashboard .metric:nth-child(2) {
-    animation: cardReveal 0.9s ease both;
-}
-
-.dashboard .metric:nth-child(3) {
-    animation: cardReveal 1.1s ease both;
-}
-
-.dashboard .metric:nth-child(4) {
-    animation: cardReveal 1.3s ease both;
-}
-
-@keyframes cardReveal {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-
-    .dashboard,
-    .dashboard .status,
-    .dashboard .dash-top::after,
-    .dashboard .metric,
-    .dashboard .metric strong {
-        animation: none;
-    }
-
-}
-/* =========================================
-   DROPDOWN HOVER FIX
-========================================= */
-
-.nav-dropdown {
-    position: relative;
-}
-
-/* Invisible bridge between button and dropdown */
-.nav-dropdown::after {
-    content: "";
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    top: 100%;
-
-    height: 18px;
-
-    background: transparent;
-    z-index: 999;
-}
-
-/* Keep dropdown above other elements */
-.nav-dropdown .dropdown-menu {
-    z-index: 1000;
 }

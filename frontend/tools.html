@@ -1,0 +1,2678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health Tools | HealthPulse</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        /* =====================================================
+           HEALTH TOOLS PAGE
+           ===================================================== */
+
+        .tools-hero {
+            position: relative;
+
+            padding: 90px 5% 70px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(45, 166, 255, 0.16),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    180deg,
+                    #f7fbff 0%,
+                    #ffffff 100%
+                );
+
+            text-align: center;
+        }
+
+        .tools-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            right: -150px;
+            top: -120px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(11, 102, 195, 0.10);
+
+            animation: slowRotate 18s linear infinite;
+        }
+
+        .tools-hero-content {
+            position: relative;
+
+            z-index: 2;
+
+            width: 90%;
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+        .tools-hero h1 {
+            margin: 14px 0 18px;
+
+            color: #102a43;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(40px, 5vw, 62px);
+
+            line-height: 1.08;
+
+            letter-spacing: -2px;
+        }
+
+        .tools-hero h1 span {
+            color: #0b66c3;
+        }
+
+        .tools-hero p {
+            max-width: 680px;
+
+            margin: auto;
+
+            color: #667b8e;
+
+            font-size: 16px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           TOOLS SECTION
+           ===================================================== */
+
+        .tools-section {
+            padding: 85px 5%;
+        }
+
+        .tools-section-heading {
+            width: 90%;
+            max-width: 760px;
+
+            margin: 0 auto 42px;
+
+            text-align: center;
+        }
+
+        .tools-section-heading h2 {
+            margin-top: 12px;
+
+            color: #102a43;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(30px, 4vw, 44px);
+
+            line-height: 1.15;
+        }
+
+        .tools-section-heading h2 span {
+            color: #0b66c3;
+        }
+
+        .tools-section-heading p {
+            margin-top: 14px;
+
+            color: #718496;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           TOOL GRID
+           ===================================================== */
+
+        .tools-grid {
+            width: 90%;
+            max-width: 1120px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .tool-card {
+            position: relative;
+
+            padding: 22px;
+
+            background: #ffffff;
+
+            border: 1px solid #e0ebf3;
+
+            border-radius: 17px;
+
+            box-shadow:
+                0 7px 25px rgba(25, 75, 110, 0.045);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .tool-card::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background: #0b66c3;
+
+            transform: scaleX(0);
+
+            transform-origin: left;
+
+            transition: transform 0.35s ease;
+        }
+
+        .tool-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+
+            right: -35px;
+            bottom: -35px;
+
+            border-radius: 50%;
+
+            background: rgba(11, 102, 195, 0.045);
+
+            transition:
+                transform 0.4s ease,
+                background 0.4s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-7px);
+
+            border-color: #c6ddeb;
+
+            box-shadow:
+                0 18px 38px rgba(25, 75, 110, 0.11);
+        }
+
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tool-card:hover::after {
+            transform: scale(1.8);
+
+            background: rgba(11, 102, 195, 0.07);
+        }
+
+
+        /* =====================================================
+           TOOL ICON
+           ===================================================== */
+
+        .tool-icon {
+            position: relative;
+
+            z-index: 2;
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 15px;
+
+            border-radius: 11px;
+
+            background: #eaf5ff;
+
+            color: #0b66c3;
+
+            font-size: 19px;
+
+            box-shadow:
+                0 5px 14px rgba(11, 102, 195, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .tool-card:hover .tool-icon {
+            transform:
+                translateY(-2px)
+                scale(1.05);
+
+            background: #dcefff;
+        }
+
+        .tool-card h3 {
+            position: relative;
+
+            z-index: 2;
+
+            margin-bottom: 7px;
+
+            color: #173b59;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 18px;
+        }
+
+        .tool-card > p {
+            position: relative;
+
+            z-index: 2;
+
+            margin-bottom: 17px;
+
+            color: #718496;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           INPUTS
+           ===================================================== */
+
+        .tool-form {
+            position: relative;
+
+            z-index: 3;
+        }
+
+        .input-group {
+            margin-bottom: 11px;
+        }
+
+        .input-group label {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #526a7e;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+        .tool-form input,
+        .tool-form select {
+            width: 100%;
+
+            height: 40px;
+
+            padding: 0 11px;
+
+            border: 1px solid #d9e6ef;
+
+            border-radius: 9px;
+
+            background: #f9fcff;
+
+            color: #29465f;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            outline: none;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .tool-form input:focus,
+        .tool-form select:focus {
+            background: #ffffff;
+
+            border-color: #76b5e4;
+
+            box-shadow:
+                0 0 0 3px rgba(11, 102, 195, 0.08);
+        }
+
+        .tool-btn {
+            width: 100%;
+
+            min-height: 40px;
+
+            margin-top: 4px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #0b66c3;
+
+            color: #ffffff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 7px 17px rgba(11, 102, 195, 0.17);
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .tool-btn:hover {
+            background: #09589f;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 11px 23px rgba(11, 102, 195, 0.23);
+        }
+
+        .tool-result {
+            min-height: 20px;
+
+            margin-top: 11px;
+
+            color: #0b66c3;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           ML PREDICTION SECTION
+           ===================================================== */
+
+        .ml-section {
+            position: relative;
+
+            padding: 90px 5%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #f6faff 0%,
+                    #edf7ff 100%
+                );
+
+            overflow: hidden;
+        }
+
+        .ml-section::before {
+            content: "";
+
+            position: absolute;
+
+            width: 330px;
+            height: 330px;
+
+            left: -180px;
+            bottom: -150px;
+
+            border-radius: 50%;
+
+            background: rgba(45, 166, 255, 0.08);
+        }
+
+        .ml-container {
+            position: relative;
+
+            z-index: 2;
+
+            width: 90%;
+            max-width: 1120px;
+
+            margin: auto;
+        }
+
+        .ml-heading {
+            max-width: 720px;
+
+            margin: 0 auto 42px;
+
+            text-align: center;
+        }
+
+        .ml-heading h2 {
+            margin-top: 12px;
+
+            color: #102a43;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(31px, 4vw, 46px);
+
+            line-height: 1.12;
+        }
+
+        .ml-heading h2 span {
+            color: #0b66c3;
+        }
+
+        .ml-heading p {
+            margin-top: 14px;
+
+            color: #718496;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+        .ml-card {
+            padding: 32px;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border: 1px solid #d8e7f1;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 25px 55px rgba(25, 75, 110, 0.10);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .ml-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid #e7eff5;
+        }
+
+        .ml-top h3 {
+            color: #173b59;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 20px;
+        }
+
+        .ml-top p {
+            margin-top: 3px;
+
+            color: #8293a3;
+
+            font-size: 11px;
+        }
+
+        .ml-badge {
+            padding: 7px 11px;
+
+            border-radius: 20px;
+
+            background: #eaf8f2;
+
+            color: #16855b;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+        .ml-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+        .ml-field label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #526a7e;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+        .ml-field input,
+        .ml-field select {
+            width: 100%;
+
+            height: 42px;
+
+            padding: 0 11px;
+
+            border: 1px solid #d9e6ef;
+
+            border-radius: 9px;
+
+            background: #f9fcff;
+
+            color: #29465f;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            outline: none;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .ml-field input:focus,
+        .ml-field select:focus {
+            border-color: #76b5e4;
+
+            box-shadow:
+                0 0 0 3px rgba(11, 102, 195, 0.08);
+        }
+
+        .ml-action {
+            margin-top: 24px;
+
+            display: flex;
+
+            justify-content: center;
+        }
+
+        .ml-action button {
+            min-width: 230px;
+
+            min-height: 46px;
+
+            padding: 12px 22px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #0b66c3;
+
+            color: #ffffff;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 24px rgba(11, 102, 195, 0.20);
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .ml-action button:hover {
+            background: #09589f;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(11, 102, 195, 0.26);
+        }
+
+        .prediction-result {
+            margin-top: 20px;
+
+            padding: 16px;
+
+            border-radius: 12px;
+
+            background: #f5faff;
+
+            border: 1px solid #dceaf4;
+
+            color: #29465f;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            text-align: center;
+        }
+
+        .prediction-result.success {
+            background: #effaf5;
+
+            border-color: #ccebdd;
+
+            color: #176c4d;
+        }
+
+        .prediction-result.warning {
+            background: #fff7ed;
+
+            border-color: #f4dcc0;
+
+            color: #9a5b1d;
+        }
+
+        .prediction-result.error {
+            background: #fff4f4;
+
+            border-color: #f0cccc;
+
+            color: #a13b3b;
+        }
+
+
+        /* =====================================================
+           DISCLAIMER
+           ===================================================== */
+
+
+
+        /* WHO SOUTH ASIA CARDIOVASCULAR RISK */
+        .who-risk-section { width: 90%; max-width: 1100px; margin: 60px auto 0; }
+        .who-risk-header { text-align: center; max-width: 800px; margin: 0 auto 30px; }
+        .who-risk-header h2 { margin-top: 12px; margin-bottom: 12px; color: #102a43; font-family: "Manrope", sans-serif; font-size: clamp(30px, 4vw, 44px); line-height: 1.15; }
+        .who-risk-header h2 span { color: #0b66c3; }
+        .who-risk-header p { max-width: 700px; margin: 0 auto; color: #718496; font-size: 15px; line-height: 1.7; }
+        .who-risk-card { padding: 35px; background: #fff; border: 1px solid #dce8f5; border-radius: 20px; box-shadow: 0 18px 45px rgba(31,70,120,.08); }
+        .who-risk-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
+        .who-risk-card .input-group { margin-bottom: 0; }
+        .who-risk-card .input-group label { display:block; margin-bottom:5px; color:#526a7e; font-size:11px; font-weight:700; }
+        .who-risk-card .input-group input, .who-risk-card .input-group select { width:100%; height:40px; padding:0 11px; border:1px solid #d9e6ef; border-radius:9px; background:#f9fcff; color:#29465f; font-family:inherit; font-size:12px; outline:none; }
+        .who-risk-card small { display:block; margin-top:6px; color:#6b7d96; font-size:12px; }
+        .who-risk-card .tool-btn { margin-top:25px; }
+        #whoRiskResult { margin-top:25px; text-align:center; line-height:1.7; }
+        #whoRiskResult strong { font-size:22px; }
+        @media (max-width:700px) { .who-risk-grid { grid-template-columns:1fr; } .who-risk-card { padding:22px; } .who-risk-section { width:95%; } }
+
+        .tools-disclaimer {
+            width: 90%;
+            max-width: 850px;
+
+            margin: 35px auto 0;
+
+            padding: 17px 20px;
+
+            background: #f8fbfd;
+
+            border: 1px solid #e1edf4;
+
+            border-radius: 12px;
+
+            color: #7a8c9c;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ml-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .tools-hero {
+                padding: 70px 5% 55px;
+            }
+
+            .tools-hero-content {
+                width: 100%;
+            }
+
+            .tools-hero h1 {
+                font-size: 39px;
+
+                letter-spacing: -1.5px;
+            }
+
+            .tools-hero p {
+                font-size: 14px;
+            }
+
+            .tools-section {
+                padding: 65px 5%;
+            }
+
+            .tools-section-heading {
+                width: 100%;
+            }
+
+            .tools-grid {
+                width: 100%;
+
+                grid-template-columns: 1fr;
+
+                gap: 17px;
+            }
+
+            .tool-card {
+                padding: 21px;
+            }
+
+            .ml-section {
+                padding: 65px 5%;
+            }
+
+            .ml-container {
+                width: 100%;
+            }
+
+            .ml-heading {
+                width: 100%;
+            }
+
+            .ml-card {
+                padding: 22px;
+
+                border-radius: 18px;
+            }
+
+            .ml-top {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .ml-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ml-action button {
+                width: 100%;
+            }
+
+            .tools-disclaimer {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+
+                <span class="brand-mark">H</span>
+
+                <span class="brand-text">
+
+                    <strong>HealthPulse</strong>
+
+                    <small>
+                        Monitor. Understand. Predict.
+                    </small>
+
+                </span>
+
+            </a>
+
+
+            <nav class="nav-menu">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="solutions.html">
+                    Solutions
+                </a>
+
+                <a href="how-it-works.html">
+                    How It Works
+                </a>
+
+                <a href="tools.html" class="active">
+                    Health Tools
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </nav>
+
+
+            <button
+                class="menu-toggle"
+                aria-label="Open Menu"
+                onclick="toggleMobileMenu()">
+
+                ☰
+
+            </button>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="solutions.html">
+                Solutions
+            </a>
+
+            <a href="how-it-works.html">
+                How It Works
+            </a>
+
+            <a href="tools.html" class="active">
+                Health Tools
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="tools-hero">
+
+        <div class="tools-hero-content reveal">
+
+            <div class="eyebrow">
+                HEALTHPULSE TOOLS
+            </div>
+
+            <h1>
+                Understand your
+                <span>health indicators.</span>
+            </h1>
+
+            <p>
+                Explore simple interactive tools for BMI, blood pressure,
+                body composition, sleep, stress and daily activity.
+                You can also try the HealthPulse machine learning prediction.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HEALTH TOOLS
+         ===================================================== -->
+
+    <section class="tools-section">
+
+        <div class="tools-section-heading reveal">
+
+            <div class="eyebrow">
+                EVERYDAY HEALTH
+            </div>
+
+            <h2>
+                Interactive <span>health tools.</span>
+            </h2>
+
+            <p>
+                Enter a few values and explore basic health categories
+                and awareness-oriented feedback.
+            </p>
+
+        </div>
+
+
+        <div class="tools-grid">
+
+
+            <!-- =================================================
+                 BMI
+                 ================================================= -->
+
+            <div class="tool-card reveal">
+
+                <div class="tool-icon">
+                    ⚖
+                </div>
+
+                <h3>
+                    BMI Calculator
+                </h3>
+
+                <p>
+                    Calculate your Body Mass Index using height and weight.
+                </p>
+
+                <div class="tool-form">
+
+                    <div class="input-group">
+
+                        <label for="height">
+                            Height (cm)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="height"
+                            placeholder="e.g. 170">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="weight">
+                            Weight (kg)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="weight"
+                            placeholder="e.g. 70">
+
+                    </div>
+
+
+                    <button
+                        class="tool-btn"
+                        onclick="calculateBMI()">
+
+                        Calculate BMI
+
+                    </button>
+
+                    <div
+                        class="tool-result"
+                        id="bmiResult">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BLOOD PRESSURE
+                 ================================================= -->
+
+            <div class="tool-card reveal">
+
+                <div class="tool-icon">
+                    ♥
+                </div>
+
+                <h3>
+                    Blood Pressure
+                </h3>
+
+                <p>
+                    Explore the basic category of a blood pressure reading.
+                </p>
+
+                <div class="tool-form">
+
+                    <div class="input-group">
+
+                        <label for="systolic">
+                            Systolic (mmHg)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="systolic"
+                            placeholder="e.g. 120">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="diastolic">
+                            Diastolic (mmHg)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="diastolic"
+                            placeholder="e.g. 80">
+
+                    </div>
+
+
+                    <button
+                        class="tool-btn"
+                        onclick="checkBP()">
+
+                        Check Blood Pressure
+
+                    </button>
+
+                    <div
+                        class="tool-result"
+                        id="bpResult">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BRI
+                 ================================================= -->
+
+            <div class="tool-card reveal">
+
+                <div class="tool-icon">
+                    ◉
+                </div>
+
+                <h3>
+                    Body Roundness
+                </h3>
+
+                <p>
+                    Explore Body Roundness Index using waist and height.
+                </p>
+
+                <div class="tool-form">
+
+                    <div class="input-group">
+
+                        <label for="waist">
+                            Waist (cm)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="waist"
+                            placeholder="e.g. 85">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="briHeight">
+                            Height (cm)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="briHeight"
+                            placeholder="e.g. 170">
+
+                    </div>
+
+
+                    <button
+                        class="tool-btn"
+                        onclick="calculateBRI()">
+
+                        Calculate BRI
+
+                    </button>
+
+                    <div
+                        class="tool-result"
+                        id="briResult">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SLEEP
+                 ================================================= -->
+
+            <div class="tool-card reveal">
+
+                <div class="tool-icon">
+                    ☾
+                </div>
+
+                <h3>
+                    Sleep Assessment
+                </h3>
+
+                <p>
+                    Review sleep duration, consistency and rested feeling.
+                </p>
+
+                <div class="tool-form">
+
+                    <div class="input-group">
+
+                        <label for="sleepHours">
+                            Sleep Hours
+                        </label>
+
+                        <input
+                            type="number"
+                            id="sleepHours"
+                            min="0"
+                            max="24"
+                            placeholder="e.g. 8">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="sleepConsistency">
+                            Sleep Consistency
+                        </label>
+
+                        <select id="sleepConsistency">
+
+                            <option value="3">
+                                Very consistent
+                            </option>
+
+                            <option value="2">
+                                Sometimes inconsistent
+                            </option>
+
+                            <option value="1">
+                                Often inconsistent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="sleepRested">
+                            Feeling Rested
+                        </label>
+
+                        <select id="sleepRested">
+
+                            <option value="3">
+                                Well rested
+                            </option>
+
+                            <option value="2">
+                                Sometimes rested
+                            </option>
+
+                            <option value="1">
+                                Usually tired
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="tool-btn"
+                        onclick="assessSleep()">
+
+                        Assess Sleep
+
+                    </button>
+
+                    <div
+                        class="tool-result"
+                        id="sleepResult">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 STRESS
+                 ================================================= -->
+
+            <div class="tool-card reveal">
+
+                <div class="tool-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Stress Assessment
+                </h3>
+
+                <p>
+                    Explore a few everyday indicators related to stress.
+                </p>
+
+                <div class="tool-form">
+
+                    <div class="input-group">
+
+                        <label for="stressOverwhelmed">
+                            Feeling Overwhelmed
+                        </label>
+
+                        <select id="stressOverwhelmed">
+
+                            <option value="1">
+                                Rarely
+                            </option>
+
+                            <option value="2">
+                                Sometimes
+                            </option>
+
+                            <option value="3">
+                                Often
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="stressRelax">
+                            Difficulty Relaxing
+                        </label>
+
+                        <select id="stressRelax">
+
+                            <option value="1">
+                                Rarely
+                            </option>
+
+                            <option value="2">
+                                Sometimes
+                            </option>
+
+                            <option value="3">
+                                Often
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="stressSleep">
+                            Stress Affecting Sleep
+                        </label>
+
+                        <select id="stressSleep">
+
+                            <option value="1">
+                                Rarely
+                            </option>
+
+                            <option value="2">
+                                Sometimes
+                            </option>
+
+                            <option value="3">
+                                Often
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="tool-btn"
+                        onclick="assessStress()">
+
+                        Assess Stress
+
+                    </button>
+
+                    <div
+                        class="tool-result"
+                        id="stressResult">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ACTIVITY
+                 ================================================= -->
+
+            <div class="tool-card reveal">
+
+                <div class="tool-icon">
+                    ↗
+                </div>
+
+                <h3>
+                    Activity Check
+                </h3>
+
+                <p>
+                    Review sitting time, movement and physical activity.
+                </p>
+
+                <div class="tool-form">
+
+                    <div class="input-group">
+
+                        <label for="sittingHours">
+                            Sitting Hours / Day
+                        </label>
+
+                        <input
+                            type="number"
+                            id="sittingHours"
+                            placeholder="e.g. 7">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="activityMinutes">
+                            Activity Minutes / Day
+                        </label>
+
+                        <input
+                            type="number"
+                            id="activityMinutes"
+                            placeholder="e.g. 30">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="movementBreaks">
+                            Movement Breaks
+                        </label>
+
+                        <select id="movementBreaks">
+
+                            <option value="3">
+                                Frequent
+                            </option>
+
+                            <option value="2">
+                                Sometimes
+                            </option>
+
+                            <option value="1">
+                                Rarely
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="tool-btn"
+                        onclick="assessSedentary()">
+
+                        Check Activity
+
+                    </button>
+
+                    <div
+                        class="tool-result"
+                        id="activityResult">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+        <!-- WHO SOUTH ASIA 10-YEAR CARDIOVASCULAR RISK -->
+
+        <div class="who-risk-section reveal">
+            <div class="who-risk-header">
+                <span class="eyebrow">MEDICAL RISK ASSESSMENT</span>
+                <h2>WHO South Asia 10-Year <span>Cardiovascular Risk</span></h2>
+                <p>Estimate your 10-year cardiovascular disease risk using the WHO South Asia laboratory-based risk assessment.</p>
+            </div>
+            <div class="who-risk-card">
+                <div class="who-risk-grid">
+                    <div class="input-group"><label for="whoAge">Age</label><input type="number" id="whoAge" placeholder="Age (40–74)" min="40" max="74"></div>
+                    <div class="input-group"><label for="whoSex">Sex</label><select id="whoSex"><option value="">Select</option><option value="Male">Male</option><option value="Female">Female</option></select></div>
+                    <div class="input-group"><label for="whoSmoking">Smoking Status</label><select id="whoSmoking"><option value="">Select</option><option value="false">Non-smoker</option><option value="true">Smoker</option></select></div>
+                    <div class="input-group"><label for="whoSystolicBP">Systolic Blood Pressure</label><input type="number" id="whoSystolicBP" placeholder="e.g. 120" min="50" max="300"><small>Enter systolic BP in mmHg</small></div>
+                    <div class="input-group"><label for="whoCholesterol">Total Cholesterol</label><input type="number" id="whoCholesterol" placeholder="e.g. 5.2" min="1" max="15" step="0.1"><small>Enter value in mmol/L</small></div>
+                    <div class="input-group"><label for="whoDiabetes">Diabetes</label><select id="whoDiabetes"><option value="">Select</option><option value="false">No</option><option value="true">Yes</option></select></div>
+                </div>
+                <button class="tool-btn" onclick="calculateWHORisk()">Calculate 10-Year Risk</button>
+                <div class="tool-result" id="whoRiskResult"></div>
+            </div>
+        </div>
+        <div class="tools-disclaimer reveal">
+
+            These tools are designed for educational and health-awareness
+            purposes only. Results are simplified indicators and should not
+            be treated as a medical diagnosis or a replacement for advice
+            from a qualified healthcare professional.
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MACHINE LEARNING PREDICTION
+         ===================================================== -->
+
+    <section class="ml-section">
+
+        <div class="ml-container">
+
+            <div class="ml-heading reveal">
+
+                <div class="eyebrow">
+                    MACHINE LEARNING
+                </div>
+
+                <h2>
+                    Cardiovascular
+                    <span>prediction.</span>
+                </h2>
+
+                <p>
+                    Enter the health and lifestyle features used by the
+                    HealthPulse machine learning model. The trained SVM
+                    classifier will return a prediction through the
+                    FastAPI backend.
+                </p>
+
+            </div>
+
+
+            <div class="ml-card reveal">
+
+
+                <div class="ml-top">
+
+                    <div>
+
+                        <h3>
+                            HealthPulse ML Model
+                        </h3>
+
+                        <p>
+                            Support Vector Machine · Cardiovascular Classification
+                        </p>
+
+                    </div>
+
+                    <div class="ml-badge">
+                        MODEL READY
+                    </div>
+
+                </div>
+
+
+                <div class="ml-grid">
+
+
+                    <!-- Age -->
+
+                    <div class="ml-field">
+
+                        <label for="mlAge">
+                            Age (years)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="mlAge"
+                            placeholder="e.g. 45">
+
+                    </div>
+
+
+                    <!-- Gender -->
+
+                    <div class="ml-field">
+
+                        <label for="mlGender">
+                            Gender
+                        </label>
+
+                        <select id="mlGender">
+
+                            <option value="1">
+                                Female
+                            </option>
+
+                            <option value="2">
+                                Male
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Height -->
+
+                    <div class="ml-field">
+
+                        <label for="mlHeight">
+                            Height (cm)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="mlHeight"
+                            placeholder="e.g. 170">
+
+                    </div>
+
+
+                    <!-- Weight -->
+
+                    <div class="ml-field">
+
+                        <label for="mlWeight">
+                            Weight (kg)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="mlWeight"
+                            placeholder="e.g. 75">
+
+                    </div>
+
+
+                    <!-- Systolic -->
+
+                    <div class="ml-field">
+
+                        <label for="mlSystolic">
+                            Systolic BP
+                        </label>
+
+                        <input
+                            type="number"
+                            id="mlSystolic"
+                            placeholder="e.g. 130">
+
+                    </div>
+
+
+                    <!-- Diastolic -->
+
+                    <div class="ml-field">
+
+                        <label for="mlDiastolic">
+                            Diastolic BP
+                        </label>
+
+                        <input
+                            type="number"
+                            id="mlDiastolic"
+                            placeholder="e.g. 85">
+
+                    </div>
+
+
+                    <!-- Cholesterol -->
+
+                    <div class="ml-field">
+
+                        <label for="mlCholesterol">
+                            Cholesterol
+                        </label>
+
+                        <select id="mlCholesterol">
+
+                            <option value="1">
+                                Normal
+                            </option>
+
+                            <option value="2">
+                                Above Normal
+                            </option>
+
+                            <option value="3">
+                                Well Above Normal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Glucose -->
+
+                    <div class="ml-field">
+
+                        <label for="mlGluc">
+                            Glucose
+                        </label>
+
+                        <select id="mlGluc">
+
+                            <option value="1">
+                                Normal
+                            </option>
+
+                            <option value="2">
+                                Above Normal
+                            </option>
+
+                            <option value="3">
+                                Well Above Normal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Smoking -->
+
+                    <div class="ml-field">
+
+                        <label for="mlSmoke">
+                            Smoking
+                        </label>
+
+                        <select id="mlSmoke">
+
+                            <option value="0">
+                                No
+                            </option>
+
+                            <option value="1">
+                                Yes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Alcohol -->
+
+                    <div class="ml-field">
+
+                        <label for="mlAlco">
+                            Alcohol
+                        </label>
+
+                        <select id="mlAlco">
+
+                            <option value="0">
+                                No
+                            </option>
+
+                            <option value="1">
+                                Yes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Activity -->
+
+                    <div class="ml-field">
+
+                        <label for="mlActive">
+                            Physically Active
+                        </label>
+
+                        <select id="mlActive">
+
+                            <option value="1">
+                                Yes
+                            </option>
+
+                            <option value="0">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- BMI -->
+
+                    <div class="ml-field">
+
+                        <label for="mlBmi">
+                            BMI
+                        </label>
+
+                        <input
+                            type="number"
+                            id="mlBmi"
+                            step="0.01"
+                            placeholder="e.g. 25.95">
+
+                    </div>
+
+                </div>
+
+
+                <div class="ml-action">
+
+                    <button
+                        onclick="predictHealth()">
+
+                        Run Cardiovascular Prediction
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="predictionResult"
+                    class="prediction-result">
+
+                    Enter the information above and run the model.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-logo">
+
+                <a href="index.html" class="logo">
+
+                    <span class="brand-mark">
+                        H
+                    </span>
+
+                    <span class="brand-text">
+
+                        <strong>
+                            HealthPulse
+                        </strong>
+
+                        <small>
+                            Monitor. Understand. Predict.
+                        </small>
+
+                    </span>
+
+                </a>
+
+                <p>
+                    A smart health monitoring and prediction system
+                    using machine learning.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>
+                    Navigate
+                </h4>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="solutions.html">
+                    Solutions
+                </a>
+
+                <a href="how-it-works.html">
+                    How It Works
+                </a>
+
+                <a href="tools.html">
+                    Health Tools
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>
+                    HealthPulse
+                </h4>
+
+                <p>
+                    Monitor health indicators, understand health patterns
+                    and explore machine learning based predictions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+
+            <p>
+                © 2026 HealthPulse. Educational project.
+            </p>
+
+            <p>
+                Monitor. Understand. Predict.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="js/script.js"></script>
+
+
+    <script>
+
+        /* =====================================================
+           BMI CALCULATOR
+           ===================================================== */
+
+        function calculateBMI() {
+
+            const height =
+                parseFloat(
+                    document.getElementById("height").value
+                );
+
+            const weight =
+                parseFloat(
+                    document.getElementById("weight").value
+                );
+
+            const result =
+                document.getElementById("bmiResult");
+
+
+            if (
+                isNaN(height) ||
+                isNaN(weight) ||
+                height <= 0 ||
+                weight <= 0
+            ) {
+
+                result.textContent =
+                    "Please enter valid height and weight.";
+
+                return;
+            }
+
+
+            const heightMeters =
+                height / 100;
+
+            const bmi =
+                weight /
+                (heightMeters * heightMeters);
+
+
+            let category;
+
+
+            if (bmi < 18.5) {
+
+                category = "Underweight";
+
+            } else if (bmi < 25) {
+
+                category = "Normal range";
+
+            } else if (bmi < 30) {
+
+                category = "Overweight";
+
+            } else {
+
+                category = "Obesity range";
+
+            }
+
+
+            result.textContent =
+                "BMI: " +
+                bmi.toFixed(1) +
+                " — " +
+                category;
+        }
+
+
+        /* =====================================================
+           BLOOD PRESSURE
+           ===================================================== */
+
+        function checkBP() {
+
+            const systolic =
+                parseFloat(
+                    document.getElementById("systolic").value
+                );
+
+            const diastolic =
+                parseFloat(
+                    document.getElementById("diastolic").value
+                );
+
+            const result =
+                document.getElementById("bpResult");
+
+
+            if (
+                isNaN(systolic) ||
+                isNaN(diastolic) ||
+                systolic <= 0 ||
+                diastolic <= 0
+            ) {
+
+                result.textContent =
+                    "Please enter valid blood pressure values.";
+
+                return;
+            }
+
+
+            let category;
+
+
+            if (
+                systolic < 120 &&
+                diastolic < 80
+            ) {
+
+                category = "Normal";
+
+            } else if (
+                systolic < 130 &&
+                diastolic < 80
+            ) {
+
+                category = "Elevated";
+
+            } else if (
+                systolic < 140 ||
+                diastolic < 90
+            ) {
+
+                category = "High";
+
+            } else {
+
+                category = "Very high";
+
+            }
+
+
+            result.textContent =
+                "Reading: " +
+                systolic +
+                "/" +
+                diastolic +
+                " mmHg — " +
+                category;
+        }
+
+
+        /* =====================================================
+           BRI
+           ===================================================== */
+
+        function calculateBRI() {
+
+            const waist =
+                parseFloat(
+                    document.getElementById("waist").value
+                );
+
+            const height =
+                parseFloat(
+                    document.getElementById("briHeight").value
+                );
+
+            const result =
+                document.getElementById("briResult");
+
+
+            if (
+                isNaN(waist) ||
+                isNaN(height) ||
+                waist <= 0 ||
+                height <= 0
+            ) {
+
+                result.textContent =
+                    "Please enter valid waist and height.";
+
+                return;
+            }
+
+
+            const waistMeters =
+                waist / 100;
+
+            const heightMeters =
+                height / 100;
+
+            const ratio =
+                waistMeters / heightMeters;
+
+
+            const value =
+                364.2 -
+                365.5 *
+                Math.sqrt(
+                    1 -
+                    Math.pow(
+                        ratio / 0.5,
+                        2
+                    )
+                );
+
+
+            if (!isFinite(value)) {
+
+                result.textContent =
+                    "Please check the entered values.";
+
+                return;
+            }
+
+
+            result.textContent =
+                "Estimated BRI: " +
+                value.toFixed(2);
+        }
+
+
+        /* =====================================================
+           SLEEP
+           ===================================================== */
+
+        function assessSleep() {
+
+            const hours =
+                parseFloat(
+                    document.getElementById("sleepHours").value
+                );
+
+            const consistency =
+                parseInt(
+                    document.getElementById("sleepConsistency").value
+                );
+
+            const rested =
+                parseInt(
+                    document.getElementById("sleepRested").value
+                );
+
+            const result =
+                document.getElementById("sleepResult");
+
+
+            if (
+                isNaN(hours) ||
+                hours < 0 ||
+                hours > 24
+            ) {
+
+                result.textContent =
+                    "Please enter sleep hours between 0 and 24.";
+
+                return;
+            }
+
+
+            let score = 0;
+
+
+            if (hours >= 7 && hours <= 9) {
+
+                score += 3;
+
+            } else if (hours >= 6 && hours < 7) {
+
+                score += 2;
+
+            } else {
+
+                score += 1;
+
+            }
+
+
+            score += consistency;
+            score += rested;
+
+
+            if (score >= 8) {
+
+                result.textContent =
+                    "Sleep pattern looks generally healthy.";
+
+            } else if (score >= 6) {
+
+                result.textContent =
+                    "Sleep pattern could be improved.";
+
+            } else {
+
+                result.textContent =
+                    "Your sleep pattern may need more attention.";
+            }
+        }
+
+
+        /* =====================================================
+           STRESS
+           ===================================================== */
+
+        function assessStress() {
+
+            const overwhelmed =
+                parseInt(
+                    document.getElementById("stressOverwhelmed").value
+                );
+
+            const relax =
+                parseInt(
+                    document.getElementById("stressRelax").value
+                );
+
+            const sleep =
+                parseInt(
+                    document.getElementById("stressSleep").value
+                );
+
+            const result =
+                document.getElementById("stressResult");
+
+
+            const score =
+                overwhelmed +
+                relax +
+                sleep;
+
+
+            if (score <= 4) {
+
+                result.textContent =
+                    "Lower stress indicators based on these responses.";
+
+            } else if (score <= 7) {
+
+                result.textContent =
+                    "Some stress indicators are present.";
+
+            } else {
+
+                result.textContent =
+                    "Higher stress indicators are present.";
+            }
+        }
+
+
+        /* =====================================================
+           ACTIVITY
+           ===================================================== */
+
+        function assessSedentary() {
+
+            const sitting =
+                parseFloat(
+                    document.getElementById("sittingHours").value
+                );
+
+            const activity =
+                parseFloat(
+                    document.getElementById("activityMinutes").value
+                );
+
+            const breaks =
+                parseInt(
+                    document.getElementById("movementBreaks").value
+                );
+
+            const result =
+                document.getElementById("activityResult");
+
+
+            if (
+                isNaN(sitting) ||
+                isNaN(activity) ||
+                sitting < 0 ||
+                activity < 0
+            ) {
+
+                result.textContent =
+                    "Please enter valid activity values.";
+
+                return;
+            }
+
+
+            let score = 0;
+
+
+            if (sitting <= 6) {
+
+                score += 3;
+
+            } else if (sitting <= 9) {
+
+                score += 2;
+
+            } else {
+
+                score += 1;
+
+            }
+
+
+            if (activity >= 30) {
+
+                score += 3;
+
+            } else if (activity >= 15) {
+
+                score += 2;
+
+            } else {
+
+                score += 1;
+
+            }
+
+
+            score += breaks;
+
+
+            if (score >= 8) {
+
+                result.textContent =
+                    "Your activity pattern looks generally active.";
+
+            } else if (score >= 6) {
+
+                result.textContent =
+                    "Your activity pattern could be improved.";
+
+            } else {
+
+                result.textContent =
+                    "Consider adding more movement to your day.";
+            }
+        }
+
+
+        /* =====================================================
+           ML PREDICTION
+           ===================================================== */
+
+        async function predictHealth() {
+
+            const result =
+                document.getElementById("predictionResult");
+
+
+            const age =
+                parseFloat(
+                    document.getElementById("mlAge").value
+                );
+
+            const gender =
+                parseInt(
+                    document.getElementById("mlGender").value
+                );
+
+            const height =
+                parseFloat(
+                    document.getElementById("mlHeight").value
+                );
+
+            const weight =
+                parseFloat(
+                    document.getElementById("mlWeight").value
+                );
+
+            const systolic =
+                parseFloat(
+                    document.getElementById("mlSystolic").value
+                );
+
+            const diastolic =
+                parseFloat(
+                    document.getElementById("mlDiastolic").value
+                );
+
+            const cholesterol =
+                parseInt(
+                    document.getElementById("mlCholesterol").value
+                );
+
+            const gluc =
+                parseInt(
+                    document.getElementById("mlGluc").value
+                );
+
+            const smoke =
+                parseInt(
+                    document.getElementById("mlSmoke").value
+                );
+
+            const alco =
+                parseInt(
+                    document.getElementById("mlAlco").value
+                );
+
+            const active =
+                parseInt(
+                    document.getElementById("mlActive").value
+                );
+
+            const bmi =
+                parseFloat(
+                    document.getElementById("mlBmi").value
+                );
+
+
+            if (
+                [
+                    age,
+                    height,
+                    weight,
+                    systolic,
+                    diastolic,
+                    bmi
+                ].some(
+                    value => isNaN(value)
+                )
+            ) {
+
+                result.className =
+                    "prediction-result error";
+
+                result.textContent =
+                    "Please fill in all required health values.";
+
+                return;
+            }
+
+
+            result.className =
+                "prediction-result";
+
+            result.textContent =
+                "Running the HealthPulse machine learning model...";
+
+
+            const inputData = {
+
+                age: age,
+
+                gender: gender,
+
+                height: height,
+
+                weight: weight,
+
+                ap_hi: systolic,
+
+                ap_lo: diastolic,
+
+                cholesterol: cholesterol,
+
+                gluc: gluc,
+
+                smoke: smoke,
+
+                alco: alco,
+
+                active: active,
+
+                bmi: bmi
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://127.0.0.1:8000/predict",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(inputData)
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Prediction request failed."
+                    );
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                result.className =
+                    "prediction-result " +
+                    (
+                        data.prediction === 1
+                            ? "warning"
+                            : "success"
+                    );
+
+
+                result.innerHTML =
+                    "<strong>" +
+                    data.result +
+                    "</strong><br>" +
+                    data.message;
+
+            } catch (error) {
+
+                result.className =
+                    "prediction-result error";
+
+                result.textContent =
+                    "Unable to connect to the HealthPulse backend. " +
+                    "Please make sure the FastAPI server is running.";
+            }
+        }
+
+
+
+
+        /* WHO SOUTH ASIA 10-YEAR CARDIOVASCULAR RISK */
+        async function calculateWHORisk() {
+            const age = parseInt(document.getElementById("whoAge").value);
+            const sex = document.getElementById("whoSex").value;
+            const smoking = document.getElementById("whoSmoking").value;
+            const systolicBP = parseFloat(document.getElementById("whoSystolicBP").value);
+            const cholesterol = parseFloat(document.getElementById("whoCholesterol").value);
+            const diabetes = document.getElementById("whoDiabetes").value;
+            const result = document.getElementById("whoRiskResult");
+
+            if (!age || !sex || !smoking || !systolicBP || !cholesterol || !diabetes) {
+                result.innerHTML = "Please complete all fields.";
+                return;
+            }
+
+            if (age < 40 || age > 74) {
+                result.innerHTML = "WHO risk assessment is available for ages 40 to 74.";
+                return;
+            }
+
+            try {
+                result.innerHTML = "Calculating your cardiovascular risk...";
+                const response = await fetch("http://127.0.0.1:8000/who-risk", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        age,
+                        sex,
+                        smoking: smoking === "true",
+                        systolic_bp: systolicBP,
+                        total_cholesterol: cholesterol,
+                        diabetes: diabetes === "true"
+                    })
+                });
+                const data = await response.json();
+
+                if (!data.success) {
+                    result.innerHTML = "<strong>Error</strong><br>" + data.error;
+                    return;
+                }
+
+                result.innerHTML = "<strong>Your 10-Year Risk: " + data.risk_percentage + "%</strong><br>Risk Category: " + data.risk_category + "<br><br><small>This assessment is for educational purposes only and is not a medical diagnosis.</small>";
+            } catch (error) {
+                result.innerHTML = "<strong>Unable to calculate risk.</strong><br>Please make sure the HealthPulse backend is running.";
+                console.error(error);
+            }
+        }
+    </script>
+    
+
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 /* =========================================================
-   DRMUDHIWALLA HEALTHTECH
+   HEALTHPULSE
    COMMON JAVASCRIPT
    ========================================================= */
 
@@ -8,7 +8,7 @@
    MOBILE MENU
    ========================================================= */
 
-function toggleMenu() {
+function toggleMobileMenu() {
 
     const mobileMenu =
         document.getElementById("mobileMenu");
@@ -23,72 +23,39 @@ function toggleMenu() {
 
 
 /* =========================================================
-   MOBILE DROPDOWN
+   DOM CONTENT LOADED
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const menuToggle =
-        document.getElementById("menuToggle");
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
 
     const mobileMenu =
         document.getElementById("mobileMenu");
 
 
-    if (menuToggle && mobileMenu) {
-
-        menuToggle.addEventListener("click", function () {
-
-            mobileMenu.classList.toggle("open");
-
-        });
-
-    }
+    const mobileMenuButton =
+        document.querySelector(".mobile-menu-btn");
 
 
     /* -----------------------------------------------------
-       MOBILE PRODUCT / INDUSTRIES DROPDOWN
-       ----------------------------------------------------- */
-
-    const mobileDropdownButtons =
-        document.querySelectorAll(".mobile-dropdown-btn");
-
-
-    mobileDropdownButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const parent =
-                button.parentElement;
-
-            parent.classList.toggle("open");
-
-        });
-
-    });
-
-
-    /* -----------------------------------------------------
-       CLOSE MOBILE MENU AFTER CLICKING NORMAL LINK
+       CLOSE MOBILE MENU AFTER CLICKING A LINK
        ----------------------------------------------------- */
 
     const mobileLinks =
-        document.querySelectorAll(
-            ".mobile-menu a"
-        );
+        document.querySelectorAll(".mobile-menu a");
 
 
     mobileLinks.forEach(function (link) {
 
         link.addEventListener("click", function () {
 
-            if (
-                !link.closest(".mobile-dropdown-content")
-            ) {
+            if (mobileMenu) {
 
-                if (mobileMenu) {
-                    mobileMenu.classList.remove("open");
-                }
+                mobileMenu.classList.remove("open");
 
             }
 
@@ -105,11 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".navbar");
 
 
-    window.addEventListener("scroll", function () {
+    function updateNavbar() {
 
         if (!navbar) {
             return;
         }
+
 
         if (window.scrollY > 30) {
 
@@ -121,7 +89,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-    });
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateNavbar
+    );
+
+
+    updateNavbar();
 
 
     /* =====================================================
@@ -132,39 +109,53 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".reveal");
 
 
-    const revealObserver =
-        new IntersectionObserver(
+    if ("IntersectionObserver" in window) {
 
-            function (entries) {
+        const revealObserver =
+            new IntersectionObserver(
 
-                entries.forEach(function (entry) {
+                function (entries) {
 
-                    if (entry.isIntersecting) {
+                    entries.forEach(function (entry) {
 
-                        entry.target.classList.add("show");
+                        if (entry.isIntersecting) {
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
+                            entry.target.classList.add("show");
 
-                    }
+                            revealObserver.unobserve(
+                                entry.target
+                            );
 
-                });
+                        }
 
-            },
+                    });
 
-            {
-                threshold: 0.12
-            }
+                },
 
-        );
+                {
+                    threshold: 0.12
+                }
+
+            );
 
 
-    revealElements.forEach(function (element) {
+        revealElements.forEach(function (element) {
 
-        revealObserver.observe(element);
+            revealObserver.observe(element);
 
-    });
+        });
+
+    } else {
+
+        /* Fallback for older browsers */
+
+        revealElements.forEach(function (element) {
+
+            element.classList.add("show");
+
+        });
+
+    }
 
 
     /* =====================================================
@@ -198,9 +189,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     event.preventDefault();
 
+
                     target.scrollIntoView({
+
                         behavior: "smooth",
+
                         block: "start"
+
                     });
 
                 }
@@ -216,30 +211,39 @@ document.addEventListener("DOMContentLoaded", function () {
        CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
        ===================================================== */
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener(
+        "click",
+        function (event) {
 
-        if (!mobileMenu || !menuToggle) {
-            return;
+            if (!mobileMenu) {
+                return;
+            }
+
+
+            if (!mobileMenuButton) {
+                return;
+            }
+
+
+            const clickedInsideMenu =
+                mobileMenu.contains(event.target);
+
+
+            const clickedMenuButton =
+                mobileMenuButton.contains(event.target);
+
+
+            if (
+                !clickedInsideMenu &&
+                !clickedMenuButton
+            ) {
+
+                mobileMenu.classList.remove("open");
+
+            }
+
         }
+    );
 
-
-        const clickedInsideMenu =
-            mobileMenu.contains(event.target);
-
-
-        const clickedToggle =
-            menuToggle.contains(event.target);
-
-
-        if (
-            !clickedInsideMenu &&
-            !clickedToggle
-        ) {
-
-            mobileMenu.classList.remove("open");
-
-        }
-
-    });
 
 });
