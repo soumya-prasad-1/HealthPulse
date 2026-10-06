@@ -2567,7 +2567,7 @@
 
                 const response =
                     await fetch(
-                        "http://127.0.0.1:8000/predict",
+                        "https://healthpulse-backend-aa49.onrender.com/predict",
                         {
                             method: "POST",
 
@@ -2645,7 +2645,7 @@
 
             try {
                 result.innerHTML = "Calculating your cardiovascular risk...";
-                const response = await fetch("http://127.0.0.1:8000/who-risk", {
+                const response = await fetch("https://healthpulse-backend-aa49.onrender.com/who-risk", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
